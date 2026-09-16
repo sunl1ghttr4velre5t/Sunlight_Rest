@@ -7,7 +7,7 @@ categories: 随笔
 ---
 
 2026/9/16
-A special day for a young man,who has .
+A special day for a young man,who has made his first blog.
 He studied 'reserve' and wrote a WP.
 Though he knows that re everything is impossible.
 Here he stays.
