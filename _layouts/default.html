@@ -143,35 +143,6 @@
 <body>
   <div class="site-background"></div>
   <div class="site-overlay"></div>
-<script>
-(function () {
-  const now  = new Date();
-  const hour = now.getHours();
- const isTeapotTime = hour >= 23 || hour < 5;
-
-  // 也可以指定具体时间段，取消下面注释使用：
-  // const t = Date.now();
-  // const isTeapotTime =
-  //   t >= new Date('2026-01-01T00:00:00').getTime() &&
-  //   t <  new Date('2026-01-02T00:00:00').getTime();
-
-  if (!isTeapotTime) return;
-
-  document.documentElement.innerHTML =
-    '<head><meta charset="UTF-8"><title>418 I\'m a teapot</title></head>' +
-    '<body style="margin:0;min-height:100vh;display:flex;align-items:center;' +
-    'justify-content:center;font-family:ui-monospace,Menlo,Consolas,monospace;' +
-    'color:#333;background:#fff">' +
-      '<div style="text-align:center;padding:2rem">' +
-        '<h1 style="font-size:3.5rem;margin:0 0 .5rem">418</h1>' +
-        '<p style="font-size:1.2rem;margin:0 0 1rem">I\'m a teapot</p>' +
-        '<p style="color:#888;font-size:.9rem;max-width:32em">' +
-          'The server refuses to brew coffee because it is, permanently, a teapot.' +
-        '</p>' +
-      '</div>' +
-    '</body>';
-})();
-</script>
   <!-- 你原来的 header、content、footer 放这里 -->
 </body>
 </html>
