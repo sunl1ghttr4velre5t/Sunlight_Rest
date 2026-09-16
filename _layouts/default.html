@@ -1,50 +1,173 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: 'zh-CN' }}">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | default: site.title }}</title>
-
   <style>
-    /* 独立背景层，固定在底层，不拦截点击 */
+    :root {
+      --content-width: 760px;
+      --text: #1f2328;
+      --muted: #6b7280;
+      --accent: #e11d48;
+      --radius: 18px;
+      --shadow: 0 12px 40px rgba(0,0,0,.10);
+      --font-sans: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+      --font-display: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+    }
+
+    body { background: transparent; }
+
+    /* 背景图层 */
     .site-background {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;                /* 放在内容下面 */
-      background-image: url('{{ site.baseurl }}/assets/images/Blue_Sky.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      pointer-events: none;       /* 防止挡住链接点击 */
+      inset: 0;
+      z-index: -1;
+      background: url('{{ site.baseurl }}/assets/images/Blue_Sky.jpg') center/cover no-repeat;
+      pointer-events: none;
     }
 
-    /* 确保 body 没有不透明背景色遮住背景图 */
-    body {
-      background: transparent;
+    /* 半透明遮罩：保证文字可读，背景太花就调高透明度 */
+    .site-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.94));
+      pointer-events: none;
     }
 
-    /* 如果用了 z-index: -1 还是被盖，就启用下面这行给内容提层 */
-    /*
-    .page-content, .post-content, main, .wrapper {
+    /* 内容层压在最上面 */
+    main.page-content,
+    .post-content {
       position: relative;
       z-index: 1;
     }
-    */
+
+    .page-content {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    /* 文章正文 */
+    .post-content {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      line-height: 1.95;
+      color: var(--text);
+      letter-spacing: .01em;
+    }
+
+    .post-content p {
+      margin: 0 0 1.5em;
+    }
+
+    /* 标题：大号、粗体、负字距，现代感主要来自这里 */
+    .post-content h1,
+    .post-content h2,
+    .post-content h3,
+    .post-title,
+    .page-heading {
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: -.03em;
+      line-height: 1.2;
+    }
+
+    .post-title,
+    .page-heading {
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      letter-spacing: -.04em;
+      margin-bottom: .4em;
+    }
+
+    .post-content h2 {
+      margin: 2.6em 0 1em;
+      padding-left: .65em;
+      border-left: 4px solid var(--accent);
+    }
+
+    /* 链接：动态下划线 */
+    .post-content a {
+      color: var(--accent);
+      text-decoration: none;
+      background-image: linear-gradient(var(--accent), var(--accent));
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      background-size: 0 2px;
+      transition: background-size .25s ease;
+    }
+    .post-content a:hover {
+      background-size: 100% 2px;
+    }
+
+    /* 引用块 */
+    .post-content blockquote {
+      margin: 2em 0;
+      padding: 1em 1.25em;
+      border-left: 4px solid var(--accent);
+      background: rgba(225, 29, 72, .06);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: #374151;
+    }
+
+    /* 代码块 */
+    .post-content pre {
+      padding: 1.2em 1.4em;
+      border-radius: var(--radius);
+      background: #0f172a;
+      color: #e5e7eb;
+      overflow-x: auto;
+      box-shadow: var(--shadow);
+    }
+    .post-content :not(pre) > code {
+      padding: .15em .4em;
+      border-radius: 6px;
+      background: rgba(15, 23, 42, .08);
+      color: #be123c;
+    }
+
+    /* 图片 */
+    .post-content img {
+      max-width: 100%;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform .35s ease;
+    }
+    .post-content img:hover {
+      transform: scale(1.01);
+    }
+
+    @media (max-width: 640px) {
+      .page-content { padding: 40px 18px 64px; }
+      .post-content { font-size: 16px; line-height: 1.85; }
+    }
   </style>
 </head>
 <body>
-  <!-- 背景层放在 body 最前面 -->
   <div class="site-background"></div>
+  <div class="site-overlay"></div>
+ const isTeapotTime = hour >= 22 || hour < 6;
 
-  <!-- 你原有的页面内容，比如 header、{{ content }} 等 -->
-  {% include header.html %}
-  <main class="page-content">
-    {{ content }}
-  </main>
-  {% include footer.html %}
+  // 也可以指定具体时间段，取消下面注释使用：
+  // const t = Date.now();
+  // const isTeapotTime =
+  //   t >= new Date('2026-01-01T00:00:00').getTime() &&
+  //   t <  new Date('2026-01-02T00:00:00').getTime();
+
+  if (!isTeapotTime) return;
+
+  document.documentElement.innerHTML =
+    '<head><meta charset="UTF-8"><title>418 I\'m a teapot</title></head>' +
+    '<body style="margin:0;min-height:100vh;display:flex;align-items:center;' +
+    'justify-content:center;font-family:ui-monospace,Menlo,Consolas,monospace;' +
+    'color:#333;background:#fff">' +
+      '<div style="text-align:center;padding:2rem">' +
+        '<h1 style="font-size:3.5rem;margin:0 0 .5rem">418</h1>' +
+        '<p style="font-size:1.2rem;margin:0 0 1rem">I\'m a teapot</p>' +
+        '<p style="color:#888;font-size:.9rem;max-width:32em">' +
+          'The server refuses to brew coffee because it is, permanently, a teapot.' +
+        '</p>' +
+      '</div>' +
+    '</body>';
+})();
+</script>
+  <!-- 你原来的 header、content、footer 放这里 -->
 </body>
 </html>
