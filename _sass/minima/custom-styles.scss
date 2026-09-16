@@ -1,0 +1,9 @@
+.post-content,
+article,
+.page-content {
+  background: transparent !important;
+  // 如果希望给文章加一点半透明背景，让文字更清晰，可以用下面这行代替：
+  // background: rgba(255, 255, 255, 0.85) !important;
+  // padding: 2rem; // 可选：增加内边距让内容不贴边
+  // border-radius: 12px; // 可选：给文章区域加圆角
+}
