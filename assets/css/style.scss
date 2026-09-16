@@ -1,0 +1,12 @@
+```scss
+---
+---
+@import "minima";
+
+body {
+  background-image: url('{{ "/assets/images/Blue_Sky.jpg" | relative_url }}');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+```
