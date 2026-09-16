@@ -143,7 +143,11 @@
 <body>
   <div class="site-background"></div>
   <div class="site-overlay"></div>
- const isTeapotTime = hour >= 22 || hour < 6;
+<script>
+(function () {
+  const now  = new Date();
+  const hour = now.getHours();
+ const isTeapotTime = hour >= 23 || hour < 5;
 
   // 也可以指定具体时间段，取消下面注释使用：
   // const t = Date.now();
