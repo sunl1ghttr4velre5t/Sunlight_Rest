@@ -4,3 +4,7 @@ author: Redem
 theme: minima
 baseurl: "/Sunlight_Rest"
 url: "https://sunl1ghttr4velre5t.github.io"
+markdown: kramdown
+kramdown:
+ input: GFM
+ hard_wrap: true
