@@ -8,7 +8,7 @@ categories: 随笔<br>
 
 2026/9/16<br>
 A special day for a young man,who has made his first blog.<br>
-He studied 'reserve' and wrote a WP.<br>
+He studied 'reverse' and wrote a WP.<br>
 Though he knows that re everything is impossible.<br>
 Here he stays.<br>
 
