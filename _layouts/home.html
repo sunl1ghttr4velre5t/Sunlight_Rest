@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+<section class="hero">
+  <div class="wrap">
+    <p class="hero-eyebrow">
+      <span class="hero-dot" aria-hidden="true"></span>
+      {{ site.tagline }}
+    </p>
+    <h1 class="hero-title">{{ site.title }}</h1>
+    <p class="hero-desc">{{ site.description }}</p>
+  </div>
+</section>
+
+<section class="wrap post-list" aria-label="文章列表">
+  <h2 class="list-heading">
+    最新文章
+    <span class="list-count">{{ site.posts | size }}</span>
+  </h2>
+
+  {% for post in site.posts %}
+  <article class="post-card">
+    <a class="post-card-link" href="{{ post.url | relative_url }}">
+      <div class="post-card-meta">
+        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y.%m.%d' }}</time>
+        {% for c in post.categories %}<span class="tag">{{ c }}</span>{% endfor %}
+      </div>
+      <h3 class="post-card-title">{{ post.title }}</h3>
+      {% if post.description %}
+      <p class="post-card-excerpt">{{ post.description }}</p>
+      {% elsif post.excerpt %}
+      <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 130 }}</p>
+      {% endif %}
+      <span class="post-card-more">阅读全文<span class="arrow" aria-hidden="true">→</span></span>
+    </a>
+  </article>
+  {% endfor %}
+</section>

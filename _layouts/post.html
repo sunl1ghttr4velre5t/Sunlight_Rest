@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+<div class="wrap">
+  <article class="sheet post">
+    <header class="post-header">
+      <div class="post-header-meta">
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y 年 %-m 月 %-d 日' }}</time>
+        {% for c in page.categories %}<span class="tag">{{ c }}</span>{% endfor %}
+        {% for t in page.tags %}<span class="tag tag-ghost">#{{ t }}</span>{% endfor %}
+      </div>
+      <h1 class="post-title">{{ page.title }}</h1>
+    </header>
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+    <footer class="post-footer">
+      <a class="back-link" href="{{ '/' | relative_url }}">
+        <span class="arrow" aria-hidden="true">←</span> 返回首页
+      </a>
+    </footer>
+  </article>
+</div>

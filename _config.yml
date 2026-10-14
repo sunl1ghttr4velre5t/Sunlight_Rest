@@ -1,10 +1,42 @@
 title: Sunlight_Rest
-description: You can't re everything..So I stay.
+tagline: You can't re everything. So I stay.
+description: Redem 的个人博客 —— 记录逆向工程的摸索、旅途随笔，和一些随手写下的小诗。
 author: Redem
-theme: minima
-baseurl: "/Sunlight_Rest"
+lang: zh-CN
+timezone: Asia/Shanghai
+
 url: "https://sunl1ghttr4velre5t.github.io"
+baseurl: "/Sunlight_Rest"
+
+# 不参与构建的文件/目录
+exclude:
+  - README.md
+  - node_modules
+  - Sunl1ght_Rest
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+
+# 保持文章原有 URL 形如 /2026/09/16/Beginning.html，避免旧链接失效
+permalink: /:year/:month/:day/:title:output_ext
+excerpt_separator: "\n\n"
+
 markdown: kramdown
 kramdown:
- input: GFM
- hard_wrap: true
+  input: GFM
+  hard_wrap: true
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# 顶部导航
+nav:
+  - title: 首页
+    url: /
+  - title: 归档
+    url: /archive.html
+
+# 联系方式（留空则不在页脚显示）
+email:
+github: sunl1ghttr4velre5t

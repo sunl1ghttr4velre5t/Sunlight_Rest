@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<div class="wrap">
+  <div class="sheet page">
+    <header class="page-header">
+      <h1 class="page-heading">{{ page.title | default: '归档' }}</h1>
+      <p class="page-desc">共 {{ site.posts | size }} 篇文章，按时间倒序。</p>
+    </header>
+
+    <ol class="archive-list">
+      {% for post in site.posts %}
+      <li class="archive-item">
+        <time class="archive-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y.%m.%d' }}</time>
+        <a class="archive-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        {% for c in post.categories %}<span class="tag tag-ghost">{{ c }}</span>{% endfor %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>
