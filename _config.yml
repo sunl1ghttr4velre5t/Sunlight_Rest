@@ -30,6 +30,12 @@ kramdown:
     block:
       line_numbers: false
 
+# 这两个插件原先是由 minima 主题顺带带来的，不再使用主题后必须显式声明，
+# 否则 feed.xml / sitemap.xml / robots.txt 会消失。
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
 # 顶部导航
 nav:
   - title: 首页
