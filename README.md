@@ -2,7 +2,7 @@
 
 > You can't re everything. So I stay.
 
-Redem 的个人博客 —— 逆向工程的摸索、旅途随笔，和一些随手写下的小诗。
+Redem 的个人博客 —— 这是梦开始的地方。
 
 线上地址：<https://sunl1ghttr4velre5t.github.io/Sunlight_Rest/>
 
@@ -31,12 +31,12 @@ description: 首页列表里显示的一句话摘要（可省略）
 
 ## 想改样式 / 文字
 
-| 想改什么 | 改哪里 |
-| --- | --- |
-| 站点名、副标题、描述、导航 | `_config.yml` |
-| 颜文字、间距、圆角等所有外观 | `assets/css/style.css`（纯手写 CSS，顶部是设计变量） |
-| 页面骨架 | `_layouts/*.html` |
-| 顶栏 / 页脚 / `<head>` | `_includes/*.html` |
+| 想改什么               | 改哪里                                     |
+| ------------------ | --------------------------------------- |
+| 站点名、副标题、描述、导航      | `_config.yml`                           |
+| 颜文字、间距、圆角等所有外观     | `assets/css/style.css`（纯手写 CSS，顶部是设计变量） |
+| 页面骨架               | `_layouts/*.html`                       |
+| 顶栏 / 页脚 / `<head>` | `_includes/*.html`                      |
 
 样式全部集中在 `assets/css/style.css` 的 `:root` 变量里，改一处即可全站生效，
 并且已内置深色模式（跟随系统设置自动切换）。
