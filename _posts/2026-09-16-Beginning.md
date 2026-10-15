@@ -3,7 +3,7 @@ layout: post
 title: "The Beginning"
 date: 2026-09-16 12:00:00 +0800
 categories: 随笔
-description: 写下第一篇博客的那天，以及一首叫 Blue 的诗。
+description: 梦开始的地方。
 ---
 
 2026/9/16
